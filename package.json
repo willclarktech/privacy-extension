@@ -10,6 +10,7 @@
 		"format": "prettier --write src public"
 	},
 	"dependencies": {
+		"@openwpm/webext-instrumentation": "./OpenWPM/Extension/webext-instrumentation",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"web-vitals": "^1.0.1"
