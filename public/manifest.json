@@ -1,9 +1,9 @@
 {
 	"manifest_version": 2,
-	"version": "0.0.1",
-	"short_name": "React App",
-	"name": "Create React App Sample",
-	"description": "Sample application showing how to create an extension with Create React App",
+	"version": "0.0.0",
+	"short_name": "Privacy Extension",
+	"name": "OpenMined Privacy Research Extension",
+	"description": "Sample browser extension showing how to capture user interactions",
 	"browser_action": {
 		"default_title": "CRE",
 		"default_popup": "popup.html"
