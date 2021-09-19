@@ -1,4 +1,6 @@
-import { injectJavascriptInstrumentPageScript } from "openwpm-webext-instrumentation";
+import { injectJavascriptInstrumentPageScript } from "@openwpm/webext-instrumentation";
 
-injectJavascriptInstrumentPageScript(window.openWpmContentScriptConfig || {});
-delete window.openWpmContentScriptConfig;
+injectJavascriptInstrumentPageScript(
+	(window as any).openWpmContentScriptConfig || {}
+);
+delete (window as any).openWpmContentScriptConfig;
