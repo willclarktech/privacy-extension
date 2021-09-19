@@ -3,9 +3,9 @@ import * as socket from "./socket.js";
 let crawlID = null;
 let visitID = null;
 let debugging = false;
-let storageController = null;
-let logAggregator = null;
-let listeningSocket = null;
+let storageController: any = null;
+let logAggregator: any = null;
+let listeningSocket: any = null;
 
 let listeningSocketCallback = async (data) => {
 	//This works even if data is an int
@@ -27,7 +27,7 @@ let listeningSocketCallback = async (data) => {
 			if (_visitID !== visitID) {
 				logError(
 					"Send Finalize but visit_id didn't match. " +
-						`Current visit_id ${visit_id}, sent visit_id ${_visit_id}.`
+						`Current visit_id ${visitID}, sent visit_id ${_visitID}.`
 				);
 			}
 			data["browser_id"] = crawlID;
@@ -81,7 +81,7 @@ export let open = async function (
 	listeningSocket = new socket.ListeningSocket(listeningSocketCallback);
 	console.log("Starting socket listening for incoming connections.");
 	await listeningSocket.startListening().then(() => {
-		browser.profileDirIO.writeFile(
+		(browser as any).profileDirIO.writeFile(
 			"extension_port.txt",
 			`${listeningSocket.port}`
 		);

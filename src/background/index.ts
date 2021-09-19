@@ -4,7 +4,7 @@ import {
 	HttpInstrument,
 	JavascriptInstrument,
 	NavigationInstrument,
-} from "openwpm-webext-instrumentation";
+} from "@openwpm/webext-instrumentation";
 
 import * as loggingDB from "./loggingdb.js";
 import { CallstackInstrument } from "./callstack-instrument.js";
@@ -12,7 +12,7 @@ import { CallstackInstrument } from "./callstack-instrument.js";
 async function main() {
 	// Read the browser configuration from file
 	let filename = "browser_params.json";
-	let config = await browser.profileDirIO.readFile(filename);
+	let config = await (browser as any).profileDirIO.readFile(filename);
 	if (config) {
 		config = JSON.parse(config);
 		console.log("Browser Config:", config);
@@ -101,7 +101,10 @@ async function main() {
 		dnsInstrument.run(config["browser_id"]);
 	}
 
-	await browser.profileDirIO.writeFile("OPENWPM_STARTUP_SUCCESS.txt", "");
+	await (browser as any).profileDirIO.writeFile(
+		"OPENWPM_STARTUP_SUCCESS.txt",
+		""
+	);
 }
 
 main();
